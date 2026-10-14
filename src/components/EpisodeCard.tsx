@@ -4,7 +4,7 @@ import { EASE, Tilt } from './fx';
 import { PosterBackdrop } from './Poster';
 
 export default function EpisodeCard({ episode, index }: { episode: Episode; index: number }) {
-  const [season, ep] = episode.code.split(' ');
+  const [, season = '', ep = ''] = episode.code.match(/^(S\d+)\s*E(\d+)$/i) ?? [];
   return (
     <motion.article
       className="w-[80vw] shrink-0 snap-start sm:w-[52vw] md:w-[38vw] lg:w-[30vw] xl:w-[26vw]"
@@ -22,7 +22,7 @@ export default function EpisodeCard({ episode, index }: { episode: Episode; inde
             </div>
             <div className="absolute left-4 top-4 flex items-center gap-2">
               <span className="rounded bg-black/50 px-2 py-0.5 text-[10px] font-bold tracking-[0.2em] text-bone backdrop-blur">{season}</span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-bone/80">EPISODE {ep.replace('E', '')}</span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-bone/80">EPISODE {ep}</span>
             </div>
             <h4 className="absolute bottom-4 left-4 right-4 font-display text-3xl leading-none tracking-wide text-bone [transform:translateZ(30px)] sm:text-4xl">{episode.title}</h4>
           </div>

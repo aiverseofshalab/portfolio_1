@@ -6,7 +6,7 @@ import { EASE, Magnetic } from './fx';
 
 /**
  * The signature moment:
- * black → studio card → SUSHMITA → THE SERIES → portrait reveal → role → ▶ PLAY
+ * black → studio card → SHALAB → THE SERIES → portrait reveal → role → ▶ PLAY
  */
 const TIMELINE = [
   { at: 300, beat: 1 }, // studio card
@@ -102,12 +102,12 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
         <motion.h1
           className="font-display leading-[0.82] text-bone drop-shadow-[0_8px_40px_rgba(0,0,0,0.8)]"
-          style={{ fontSize: 'clamp(4.6rem, 20vw, 15rem)' }}
+          style={{ fontSize: 'clamp(4rem, 15vw, 12rem)' }}
           initial={{ opacity: 0, scale: 1.3, filter: 'blur(20px)', letterSpacing: '0.5em' }}
           animate={beat >= 2 ? { opacity: 1, scale: 1, filter: 'blur(0px)', letterSpacing: '0.04em', y: beat >= 4 ? '-30vh' : 0 } : {}}
           transition={{ duration: 1.3, ease: EASE }}
         >
-          {profile.firstName}
+          I'M {profile.firstName}.
         </motion.h1>
         <motion.p
           className="font-sans text-sm font-bold text-crimson-2 [text-shadow:0_2px_20px_rgba(0,0,0,0.9)] sm:text-lg"
@@ -115,7 +115,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           animate={beat >= 3 ? { opacity: 1, letterSpacing: '0.7em', y: beat >= 4 ? '-30vh' : 0 } : {}}
           transition={{ duration: 1.1, ease: EASE }}
         >
-          {profile.seriesTag}
+          DEVELOPER BY CHOICE. BUILDER BY NATURE.
         </motion.p>
       </div>
 
@@ -127,7 +127,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           animate={beat >= 5 ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          {profile.tagline.join('  •  ')}
+          SOFTWARE ENGINEER • JAVA • AI • CREATOR.
         </motion.p>
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={beat >= 6 ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.7, ease: EASE }}>
           <Magnetic>
@@ -138,7 +138,7 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
               tabIndex={beat >= 6 ? 0 : -1}
               className="group flex items-center gap-3 rounded-full bg-bone px-9 py-4 font-sans text-base font-bold tracking-wide text-ink shadow-[0_0_60px_rgba(229,19,43,0.45)] transition hover:bg-white"
             >
-              <span className="text-lg transition-transform group-hover:scale-125">▶</span> PLAY
+              <span className="text-lg transition-transform group-hover:scale-125">▶</span> ENTER MY WORLD
             </button>
           </Magnetic>
         </motion.div>

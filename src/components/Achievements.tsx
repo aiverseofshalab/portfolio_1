@@ -74,24 +74,31 @@ export default function Achievements() {
         <div className="group/rail relative">
           <div ref={rail} className="rail gutter flex snap-x gap-3 overflow-x-auto py-5">
             {certifications.map((c, i) => (
-              <motion.a
+              <motion.div
                 key={c.name}
-                href={c.link}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="link"
-                className="group relative flex w-[230px] shrink-0 snap-start flex-col justify-between rounded-xl bg-ink-2 p-4 ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-white/30"
+                className="w-[230px] shrink-0 snap-start"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: Math.min(i, 6) * 0.04, ease: EASE }}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-crimson-2">{c.issuer}</span>
-                  <span className="text-sm text-smoke transition group-hover:text-bone">↗</span>
-                </div>
-                <p className="mt-6 text-sm font-medium leading-snug text-bone">{c.name}</p>
-              </motion.a>
+                {c.link ? (
+                  <a href={c.link} target="_blank" rel="noreferrer" data-cursor="link" className="group relative flex h-full flex-col justify-between rounded-xl bg-ink-2 p-4 ring-1 ring-white/10 transition hover:-translate-y-1 hover:ring-white/30">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-crimson-2">{c.issuer}</span>
+                      <span className="text-sm text-smoke transition group-hover:text-bone">↗</span>
+                    </div>
+                    <p className="mt-6 text-sm font-medium leading-snug text-bone">{c.name}</p>
+                  </a>
+                ) : (
+                  <div className="relative flex h-full flex-col justify-between rounded-xl bg-ink-2 p-4 ring-1 ring-white/10">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-crimson-2">{c.issuer}</span>
+                    </div>
+                    <p className="mt-6 text-sm font-medium leading-snug text-bone">{c.name}</p>
+                  </div>
+                )}
+              </motion.div>
             ))}
           </div>
           <RailButtons rail={rail} />

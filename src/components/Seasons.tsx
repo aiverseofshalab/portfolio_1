@@ -6,7 +6,7 @@ import EpisodeCard from './EpisodeCard';
 import { RailButtons } from './Rail';
 
 export default function Seasons() {
-  const [active, setActive] = useState(seasons.length - 2);
+  const [active, setActive] = useState(Math.max(0, seasons.length - 2));
   const season = seasons[active];
   const rail = useRef<HTMLDivElement>(null);
 
